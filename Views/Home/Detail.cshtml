@@ -1,0 +1,406 @@
+﻿@model RequestViewModel
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var Workflows = ViewData["Workflows"] as SelectList;
+    var CWQRequestPrefixes = ViewData["CWQRequestPrefixes"] as SelectList;
+    var LSAs = ViewData["LSAs"] as SelectList;
+    var Segments = ViewData["Segments"] as SelectList;
+}
+<section class="request-detail">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-primary parent">
+                    <div class="card-header">
+                        <h3 class="card-title">Header</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!-- sub panel-->
+                        <div class="card card-navy">
+                            <div class="card-header">
+                                <h3 class="card-title">WO Identification</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="WOTitle"></label>
+                                            <input type="text" class="form-control" asp-for="WOTitle" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="Id"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.Id)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="VersionNumber"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.VersionNumber)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="Workflow"></label>
+                                            <select asp-for=" Workflow" class="form-control select2bs4" asp-items="Workflows"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="RelatedWorkOrderRequest"></label>
+                                            <input type="text" class="form-control" asp-for="RelatedWorkOrderRequest" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ZurichSubProjectCode"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.ZurichSubProjectCode)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ClientWorkRequestIdPrefix"></label>
+                                            <select asp-for="ClientWorkRequestIdPrefix" class="form-control select2bs4" asp-items="CWQRequestPrefixes"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ClientWorkRequestIdNumber"></label>
+                                            <input type="text" class="form-control" asp-for="ClientWorkRequestIdNumber" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ClientWorkRequestId"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.ClientWorkRequestId)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="BusinessUnitId"></label>
+                                            <input type="text" class="form-control" asp-for="BusinessUnitId" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="GAMSRNumber"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.GAMSRNumber)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="GAMSRNumberLink"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.GAMSRNumberLink)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ClientSAPId"></label>
+                                            <input type="text" class="form-control" asp-for="ClientSAPId" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="RequestPriority"></label>
+                                            <select asp-for=" RequestPriority" class="form-control select2bs4" asp-items="Html.GetEnumSelectList<Priority>()"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ClientProgramId"></label>
+                                            <input type="text" class="form-control" asp-for="ClientProgramId" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ClientProjectId"></label>
+                                            <input type="text" class="form-control" asp-for="ClientProjectId" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="AsOfDate"></label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="far fa-calendar-alt"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text" class="form-control float-right" asp-for="AsOfDate" id="asOfDate">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ClientStrategicProgram"></label>
+                                            <div class="custom-bs-switch">
+                                                <input type="checkbox" name="my-checkbox" asp-for="ClientStrategicProgram" data-bootstrap-switch>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ClientStrategicProgramId"></label>
+                                            <input type="text" class="form-control" asp-for="ClientStrategicProgramId" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ClientStrategicProjectId"></label>
+                                            <input type="text" class="form-control" asp-for="ClientStrategicProjectId" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="DateRequestEntered"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.DateRequestEntered)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="WOStatus"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.WOStatus)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="WorkStatus"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.WorkStatus)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="TimeRequestEntered"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.TimeRequestEntered)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="DXCTransferDate"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.DXCTransferDate)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ClientSubmitDate"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.ClientSubmitDateDisplay)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ClientTransferDate"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.ClientTransferDate)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="OwningBusinessUnit"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.OwningBusinessUnit)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="OwningBusinessUnitCode"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.OwningBusinessUnitCode)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="SubBusinessUnit"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.SubBusinessUnit)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="SubBusinessUnitCode"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.SubBusinessUnitCode)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="SubSegment"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.SubSegment)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="SubSegmentCode"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.SubSegmentCode)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="LSA"></label>
+                                            <select asp-for=" LSA" class="form-control select2bs4" asp-items="LSAs"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="LSACode"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.LSACode)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="BilledEntity"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.BilledEntity)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="Segment"></label>
+                                            <select asp-for=" Segment" class="form-control select2bs4" asp-items="Segments"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="SegmentCode"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.SegmentCode)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="Region"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.Region)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="RegionCode"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.RegionCode)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- sub panel-->
+                        <div class="card card-info">
+                            <div class="card-header">
+                                <h3 class="card-title">Requestor Information</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+
+                            </div>
+                        </div>
+                        <!-- sub panel-->
+                        <div class="card card-success">
+                            <div class="card-header">
+                                <h3 class="card-title">Details</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+
+                            </div>
+                        </div>
+                        <!-- sub panel-->
+                        <div class="card card-warning">
+                            <div class="card-header">
+                                <h3 class="card-title">Notes</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+
+                            </div>
+                        </div>
+                        <!-- sub panel-->
+                        <div class="card card-gray">
+                            <div class="card-header">
+                                <h3 class="card-title">Status</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+
+                            </div>
+                        </div>
+                        <!-- sub panel-->
+                        <div class="card card-olive">
+                            <div class="card-header">
+                                <h3 class="card-title">References</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            })
+        });
+        $('#asOfDate').daterangepicker({
+            singleDatePicker: true
+        });
+        $("input[data-bootstrap-switch]").each(function () {
+            $(this).bootstrapSwitch({
+                onText: 'Yes',
+                offText: 'No',
+            });
+            $(this).bootstrapSwitch('state', $(this).prop('checked'));
+        });
+    </script>
+}

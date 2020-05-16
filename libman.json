@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "admin-lte@3.0.4",
+      "destination": "wwwroot/lib/admin-lte/"
+    },
+    {
+      "library": "ionicons@4.5.5",
+      "destination": "wwwroot/lib/ionicons/"
+    }
+  ]
+}

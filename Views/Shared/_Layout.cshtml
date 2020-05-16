@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>RM Dashboard</title>
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/plugins/fontawesome-free/css/all.css" />
+        <link rel="stylesheet" href="~/lib/plugins/fontawesome-free/css/v4-shims.css" />
+        <link rel="stylesheet" href="~/lib/ionicons/css/ionicons.css" />
+        <link rel="stylesheet" href="~/lib/plugins/datatables-bs4/css/dataTables.bootstrap4.css" />
+        <link rel="stylesheet" href="~/lib/plugins/datatables-responsive/css/responsive.bootstrap4.css" />
+        <link rel="stylesheet" href="~/lib/plugins/select2/css/select2.css" />
+        <link rel="stylesheet" href="~/lib/plugins/select2-bootstrap4-theme/select2-bootstrap4.css" />
+        <link rel="stylesheet" href="~/lib/plugins/daterangepicker/daterangepicker.css" />
+        <link rel="stylesheet" href="~/lib/admin-lte/css/adminlte.css" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/lib/plugins/fontawesome-free/css/all.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/lib/plugins/fontawesome-free/css/v4-shims.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/lib/ionicons/css/ionicons.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/lib/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/lib/plugins/datatables-responsive/css/responsive.bootstrap4.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/lib/plugins/select2/css/select2.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/lib/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/lib/plugins/daterangepicker/daterangepicker.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/lib/admin-lte/css/adminlte.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    </environment>
+
+    <environment names="Development">
+        <script src="~/lib/jquery/jquery.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap/js/bootstrap.js" asp-append-version="true"></script>
+        <script src="~/lib/plugins/datatables/jquery.dataTables.js" asp-append-version="true"></script>
+        <script src="~/lib/plugins/datatables-bs4/js/dataTables.bootstrap4.js" asp-append-version="true"></script>
+        <script src="~/lib/plugins/datatables-responsive/js/dataTables.responsive.js" asp-append-version="true"></script>
+        <script src="~/lib/plugins/datatables-responsive/js/responsive.bootstrap4.js" asp-append-version="true"></script>
+        <script src="~/lib/plugins/select2/js/select2.full.min.js" asp-append-version="true"></script>
+        <script src="~/lib/plugins/chart.js/Chart.min.js" asp-append-version="true"></script>
+        <script src="~/lib/plugins/moment/moment.min.js" asp-append-version="true"></script>
+        <script src="~/lib/plugins/daterangepicker/daterangepicker.js" asp-append-version="true"></script>
+        <script src="~/lib/plugins/bootstrap-switch/js/bootstrap-switch.min.js" asp-append-version="true"></script>
+        <script src="~/lib/admin-lte/js/adminlte.js" asp-append-version="true"></script>
+        <script src="~/lib/plugins/pace-progress/pace.js" asp-append-version="true"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/lib/jquery/jquery.min.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap/js/bootstrap.min.js" asp-append-version="true"></script>
+        <script src="~/lib/plugins/datatables/jquery.dataTables.min.js" asp-append-version="true"></script>
+        <script src="~/lib/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js" asp-append-version="true"></script>
+        <script src="~/lib/plugins/datatables-responsive/js/dataTables.responsive.min.js" asp-append-version="true"></script>
+        <script src="~/lib/plugins/datatables-responsive/js/responsive.bootstrap4.min.js" asp-append-version="true"></script>
+        <script src="~/lib/plugins/select2/js/select2.full.min.js" asp-append-version="true"></script>
+        <script src="~/lib/plugins/chart.js/Chart.min.js" asp-append-version="true"></script>
+        <script src="~/lib/plugins/moment/moment.min.js" asp-append-version="true"></script>
+        <script src="~/lib/plugins/daterangepicker/daterangepicker.js" asp-append-version="true"></script>
+        <script src="~/lib/plugins/bootstrap-switch/js/bootstrap-switch.min.js" asp-append-version="true"></script>
+        <script src="~/lib/admin-lte/js/adminlte.min.js" asp-append-version="true"></script>
+        <script src="~/lib/plugins/pace-progress/pace.min.js" asp-append-version="true"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+</head>
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to to the body tag
+to get the desired effect
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Index">Account</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a class="nav-link" asp-area="" asp-controller="Role" asp-action="Index">Role</a>
+                </li>
+            </ul>
+
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+                </li>
+                <li class="nav-item">
+                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home")">
+                        <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar elevation-4 sidebar-light-lightblue">
+            <!-- Brand Logo -->
+            <a class="brand-link navbar-dark" asp-area="" asp-action="Index">
+                <svg height="35px" width="205px" id="main-logo" viewBox="0 0 205 35" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <path d="M45.0889927,6.18226401 L49.9997591,6.18226401 L49.9997591,28.771856 L45.0889927,28.771856 C38.8336771,28.771856 33.8014353,23.7855419 33.8014353,17.4638309 C33.8014353,11.1677461 38.8336771,6.18226401 45.0889927,6.18226401 Z M25.0220946,21.1308892 L32.9719083,34.9276617 L17.0278508,34.9276617 L25.0220946,21.1308892 Z M25.0220946,13.7969389 L17.0278508,-2.48689958e-14 L32.9719083,-2.48689958e-14 L25.0220946,13.7969389 Z M4.91093281,28.771856 L-1.0658141e-14,28.771856 L-1.0658141e-14,6.18226401 L4.91093281,6.18226401 C11.166082,6.18226401 16.1983238,11.1677461 16.1983238,17.4638309 C16.1983238,23.7855419 11.166082,28.771856 4.91093281,28.771856 Z" id="path5899" fill="#FFFFFF" fill-rule="nonzero" transform="translate(24.999880, 17.463831) scale(-1, 1) rotate(-180.000000) translate(-24.999880, -17.463831) "></path>
+                        <path d="M63.2447339,14.8875547 L67.9802763,14.8875547 C72.2854963,14.8875547 74.6892109,18.0430853 74.6892109,21.3418903 C74.6892109,24.6405288 72.2675246,27.7960594 67.9802763,27.7960594 L63.2447339,27.7960594 L63.2447339,14.8875547 Z M67.8368355,25.1785149 C70.2225784,25.1785149 71.5859313,23.3139513 71.5859313,21.3418903 C71.5859313,19.3876345 70.2225784,17.5052656 67.8368355,17.5052656 L66.2762931,17.5052656 L66.2762931,25.1785149 L67.8368355,25.1785149 Z M83.245403,14.8875547 L86.797143,14.8875547 L82.6175585,21.3776672 L86.7611996,27.7960594 L83.2813464,27.7960594 L80.7162194,23.5469177 L78.1153154,27.7960594 L74.5815471,27.7960594 L78.74316,21.3776672 L74.5456037,14.8875547 L78.0076516,14.8875547 L80.644499,19.1904451 L83.245403,14.8875547 Z M93.3085553,14.6544218 C97.0217078,14.6544218 99.0486823,16.8777538 99.443394,19.7102931 L96.3760579,19.7102931 C96.0888435,18.3657438 94.9767615,17.3616584 93.3802757,17.3616584 C91.0664196,17.3616584 89.8644792,19.2084168 89.8644792,21.3418903 C89.8644792,23.4751973 91.0664196,25.3219557 93.3802757,25.3219557 C94.9767615,25.3219557 96.0888435,24.3178703 96.3760579,22.973321 L99.443394,22.973321 C99.0486823,25.8060267 97.0217078,28.0291923 93.3085553,28.0291923 C89.1649142,28.0291923 86.7611996,24.8736617 86.7611996,21.3418903 C86.7611996,17.8099524 89.1649142,14.6544218 93.3085553,14.6544218 Z M100.465784,16.5907059 C100.465784,15.5688152 101.290984,14.7261422 102.330181,14.7261422 C103.388514,14.7261422 104.195743,15.5688152 104.195743,16.5907059 C104.195743,17.6125966 103.388514,18.4552695 102.330181,18.4552695 C101.290984,18.4552695 100.465784,17.6125966 100.465784,16.5907059 Z M104.429043,24.1566242 L104.429043,21.8617382 L105.881921,21.8617382 L105.881921,18.096834 C105.881921,15.5510099 107.101667,14.7441139 109.308026,14.7441139 C110.115254,14.7441139 110.725127,14.8158343 111.137644,14.8875547 L111.137644,17.2361893 C110.779042,17.1824407 110.24089,17.1285256 109.971814,17.1285256 C109.218334,17.1285256 108.805817,17.3796301 108.805817,18.3118287 L108.805817,21.8617382 L110.922483,21.8617382 L110.922483,24.1566242 L108.805817,24.1566242 L108.805817,26.8996378 L105.881921,26.8996378 L105.881921,24.1566242 L104.429043,24.1566242 Z M121.416124,17.7022887 L118.63567,17.7022887 C118.330816,17.1464973 117.792664,16.7521183 116.877771,16.7521183 C115.550528,16.7521183 114.88674,17.5947913 114.832991,18.7601228 L121.577703,18.7601228 C121.631285,19.1904451 121.649257,19.5131036 121.649257,19.8539002 C121.649257,22.3098659 119.945107,24.4075624 116.877771,24.4075624 C113.720743,24.4075624 111.998788,22.2025349 111.998788,19.5131036 C111.998788,16.8418104 113.738715,14.6364501 116.913715,14.6364501 C119.442898,14.6364501 120.949858,15.9811658 121.416124,17.7022887 Z M116.841994,22.3278376 C117.954243,22.3278376 118.671613,21.6287718 118.779277,20.5349943 L114.850963,20.5349943 C114.958627,21.6645488 115.747718,22.3278376 116.841994,22.3278376 Z M132.376197,20.588743 C132.017429,22.7403546 130.420943,24.4075624 127.622517,24.4075624 C124.483627,24.4075624 122.582121,22.1665915 122.582121,19.5131036 C122.582121,16.8777538 124.483627,14.6364501 127.622517,14.6364501 C130.420943,14.6364501 132.017429,16.3039907 132.376197,18.4552695 L129.43433,18.4552695 C129.183226,17.64854 128.555381,17.1107203 127.640489,17.1107203 C126.349022,17.1107203 125.523988,18.2043314 125.523988,19.5131036 C125.523988,20.8218759 126.349022,21.9334586 127.640489,21.9334586 C128.555381,21.9334586 129.16542,21.3956389 129.416359,20.588743 L132.376197,20.588743 Z M133.685635,14.8875547 L136.609531,14.8875547 L136.609531,19.7282648 C136.609531,21.037037 137.219403,21.8797099 138.403206,21.8797099 C139.658895,21.8797099 140.053607,21.1087574 140.053607,19.9971746 L140.053607,14.8875547 L142.977336,14.8875547 L142.977336,20.2123358 C142.977336,22.8298803 141.82931,24.3897571 139.479511,24.3897571 C138.116324,24.3897571 137.129711,23.7800506 136.609531,22.812075 L136.609531,28.3338791 L133.685635,28.3338791 L133.685635,14.8875547 Z M144.825092,14.8875547 L147.748821,14.8875547 L147.748821,19.7282648 C147.748821,21.037037 148.358861,21.8797099 149.542663,21.8797099 C150.798352,21.8797099 151.192898,21.1087574 151.192898,19.9971746 L151.192898,14.8875547 L154.116959,14.8875547 L154.116959,20.2123358 C154.116959,22.8298803 152.968768,24.3897571 150.618968,24.3897571 C149.23781,24.3897571 148.233225,23.7800506 147.713044,22.812075 L147.713044,24.1566242 L144.825092,24.1566242 L144.825092,14.8875547 Z M160.6104,14.6364501 C163.839149,14.6364501 165.758626,16.8777538 165.758626,19.5131036 C165.758626,22.1665915 163.839149,24.4075624 160.6104,24.4075624 C157.417428,24.4075624 155.480146,22.1665915 155.480146,19.5131036 C155.480146,16.8777538 157.417428,14.6364501 160.6104,14.6364501 Z M160.6104,17.164469 C159.28299,17.164469 158.421847,18.2221367 158.421847,19.5131036 C158.421847,20.8039042 159.28299,21.8797099 160.6104,21.8797099 C161.93781,21.8797099 162.816759,20.8039042 162.816759,19.5131036 C162.816759,18.2221367 161.93781,17.164469 160.6104,17.164469 Z M167.175561,14.8875547 L170.099456,14.8875547 L170.099456,28.3338791 L168.637592,28.3338791 L167.175561,28.3338791 L167.175561,14.8875547 Z M176.646812,14.6364501 C179.875727,14.6364501 181.795038,16.8777538 181.795038,19.5131036 C181.795038,22.1665915 179.875727,24.4075624 176.646812,24.4075624 C173.454007,24.4075624 171.516558,22.1665915 171.516558,19.5131036 C171.516558,16.8777538 173.454007,14.6364501 176.646812,14.6364501 Z M176.646812,17.164469 C175.319569,17.164469 174.458425,18.2221367 174.458425,19.5131036 C174.458425,20.8039042 175.319569,21.8797099 176.646812,21.8797099 C177.974222,21.8797099 178.853337,20.8039042 178.853337,19.5131036 C178.853337,18.2221367 177.974222,17.164469 176.646812,17.164469 Z M193.042159,14.7081705 L193.042159,24.1566242 L190.154207,24.1566242 L190.154207,22.7941033 C189.615888,23.7800506 188.414114,24.3897571 187.230312,24.3897571 C184.521577,24.3897571 182.727736,22.2918942 182.727736,19.5131036 C182.727736,16.7521183 184.593298,14.7978626 187.265922,14.7978626 C188.467863,14.7978626 189.615888,15.3895974 190.118264,16.2322703 L190.118264,14.6364501 C190.118264,13.3098726 189.418699,12.5748635 188.019402,12.5748635 C186.781685,12.5748635 186.100092,13.1484601 185.974622,13.9912995 L183.068699,13.9912995 C183.229945,11.92938 184.862374,10.4593617 187.947682,10.4593617 C191.373953,10.4593617 193.042159,12.0011004 193.042159,14.7081705 Z M187.85799,17.164469 C186.566524,17.164469 185.669603,18.2401084 185.669603,19.5131036 C185.669603,20.7860989 186.566524,21.8797099 187.85799,21.8797099 C189.203371,21.8797099 190.100292,20.7860989 190.100292,19.5131036 C190.100292,18.2401084 189.203371,17.164469 187.85799,17.164469 Z M200.413384,13.5250338 L204.646717,24.1386525 L201.63313,24.1386525 L199.498658,18.4374642 L197.184635,24.1566242 L193.991664,24.1566242 L197.973892,14.8517777 L197.740593,14.2780146 C197.364019,13.3637877 196.897587,13.0767398 196.162245,13.0767398 C195.928946,13.0767398 195.498457,13.1306548 195.193438,13.1844035 L195.193438,10.7281051 C195.534401,10.6743564 195.946918,10.6385794 196.467099,10.6385794 C198.673457,10.6385794 199.642099,11.5709445 200.413384,13.5250338 Z" id="path5901" fill="#FFFFFF" fill-rule="nonzero" transform="translate(133.945726, 19.396620) scale(-1, 1) rotate(-180.000000) translate(-133.945726, -19.396620) "></path>
+                    </g>
+                </svg>
+                <br />
+                
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="info">
+                        <span>Request Management</span>
+                    </div>
+                </div>
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+                 with font-awesome or any other icon font library -->
+                        <li class="nav-item has-treeview menu-open">
+                            <a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    DXC Dashboard
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Request</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item has-treeview">
+                            <a class="nav-link" asp-area="" asp-controller="Search" asp-action="Index">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>
+                                    Search
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="pages/layout/top-nav.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Request</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0 text-dark">Dashboard</h1>
+                        </div><!-- /.col -->
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item">Dashboard</li>
+                            </ol>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+            <!-- Main content -->
+            <div class="content">
+                <div class="container-fluid">
+                    @RenderBody()
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+        <!-- Main Footer -->
+        <footer class="main-footer">
+            <strong>Copyright &copy; 2020 <a href="#">Request Management</a>.</strong>
+            All rights reserved.
+            <div class="float-right d-none d-sm-inline-block">
+                <b>Version</b> 1.0.0
+            </div>
+        </footer>
+    </div>
+    <!-- ./wrapper -->
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ApplicationUser>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="box-header with-border">
+                <h3 class="box-title">Accounts</h3>
+            </div>
+            <div class="box-body">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th>User Name</th>
+                            <th>Role</th>
+                            <th colspan="2">&nbsp;</th>
+                        </tr>
+                        @foreach (var account in Model)
+                        {
+                            <tr>
+                                <td>@account.Email</td>
+                                <td>@account.Role</td>
+                                <td><a asp-action="Edit" asp-route-id="@account.Id" class="btn btn-sm btn-success">Edit</a></td>
+                                <td>
+                                    <form asp-action="Delete" asp-route-id="@account.Id" method="post">
+                                        <button type="submit" class="btn btn-sm btn-danger">
+                                            Delete
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="box-footer clearfix">
+                <a asp-action="Create" class="btn btn-sm btn-primary">Create</a>
+            </div>
+        </div>
+    </div>
+</section>
+
