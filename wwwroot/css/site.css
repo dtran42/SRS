@@ -124,3 +124,10 @@ body {
 .btn-wrapper button {
     margin-left: 10px;
 }
+a.toastsDefaultDefault {
+    color: #0366d6;
+    cursor: pointer;
+}
+a.toastsDefaultDefault:hover {
+    color: deepskyblue;
+}
