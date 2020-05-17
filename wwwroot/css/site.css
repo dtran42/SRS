@@ -93,3 +93,10 @@ body {
 .card > .card-header > .card-title{
     font-weight:bold;
 }
+.toast-header {
+    background-color: #17a2b8;
+}
+.toast-header .mr-auto {
+    font-weight:600;
+    color: #fff;
+}

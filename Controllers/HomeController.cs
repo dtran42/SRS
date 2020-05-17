@@ -120,6 +120,19 @@ namespace SRS.Controllers
             };
             ViewData["Segments"] = new SelectList(segments, "Key", "Value");
 
+            List<KeyValuePair<string, string>> helpList = new List<KeyValuePair<string, string>>()
+            {
+                new KeyValuePair<string, string>("WO Number","ITG generated SR number. Used by ITG to track work orders. Independent and not related to GAM SR number."),
+                new KeyValuePair<string, string>("Business Unit ID","Enter a business unit identifier that you want appended to the Client Work Order ID."),
+                new KeyValuePair<string, string>("Client SAP ID","Enter the Client SAP Internal Order number or the local host code."),
+                new KeyValuePair<string, string>("Client Program ID","Enter the Program ID from the Global Project Tracking Database if this project is part of a larger program."),
+                new KeyValuePair<string, string>("Client Project ID","Enter the Project ID from the Global Project Tracking Database if this project is part of a larger program."),
+                new KeyValuePair<string, string>("Client Work Request ID Prefix","Click on the small icon to the right of the Client Work Request ID Prefix field to select from a list of Prefixes. Typing the first few letters of the Prefix will bring you closer to the entry you need to select."),
+                new KeyValuePair<string, string>("Client Work Request ID Number","Enter a numeric value for the Client Work Request ID Number."),
+                new KeyValuePair<string, string>("Client Work Request ID","The work request ID will be formed automatically using a prefix associated with the selected business area, the sequence number specified in the Client Work Request ID Number field and the Business Unit ID.")
+            };
+            ViewBag.HelpList = helpList;
+
             RequestViewModel request = new RequestViewModel
             {
                 Id = 53278,
