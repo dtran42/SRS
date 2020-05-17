@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>RM Dashboard</title>
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/plugins/fontawesome-free/css/all.css" />
+        <link rel="stylesheet" href="~/lib/plugins/fontawesome-free/css/v4-shims.css" />
+        <link rel="stylesheet" href="~/lib/plugins/icheck-bootstrap/icheck-bootstrap.min.css" />
+        <link rel="stylesheet" href="~/lib/admin-lte/css/adminlte.css" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/lib/plugins/fontawesome-free/css/all.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/lib/plugins/icheck-bootstrap/icheck-bootstrap.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/lib/admin-lte/css/adminlte.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    </environment>
+
+    <environment names="Development">
+        <script src="~/lib/jquery/jquery.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+        <script src="~/lib/admin-lte/js/adminlte.js" asp-append-version="true"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/lib/jquery/jquery.min.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+        <script src="~/lib/admin-lte/js/adminlte.min.js" asp-append-version="true"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+</head>
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <a><b>Request Management</b></a>
+        </div>
+        @RenderBody()
+    </div>
+        <!-- ./wrapper -->
+        @RenderSection("scripts", required: false)
+</body>
+</html>
