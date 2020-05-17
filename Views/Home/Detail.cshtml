@@ -11,12 +11,41 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
+                <div class="header-title">@Html.DisplayFor(m => m.Workflow) - #@Html.DisplayFor(m => m.Id)</div>
+                <div class="card card-lightblue action-box">
+                    <div class="card-header">
+                        <h3 class="card-title"><b>Description: </b>@Html.DisplayFor(m => m.WOTitle)</h3><br/>
+                        <h3 class="card-title"><b>Request Status: </b>@Html.DisplayFor(m => m.WOStatus)</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="action-title">Available Actions</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="action-btn-bar">
+                                    <div class="action-desc">Request Validation</div>
+                                    <div class="btn-wrapper">
+                                        <button type="button" class="btn btn-sm btn-warning">Project Setup Pending</button>
+                                        <button type="button" class="btn btn-sm btn-warning">Send for ADM Review</button>
+                                        <button type="button" class="btn btn-sm btn-warning">Approve</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-sm btn-info">Make a copy</button>
+                        <button type="button" class="btn btn-sm btn-danger">Delete</button>
+                    </div>
+                </div>
                 <div class="card card-primary parent">
                     <div class="card-header">
                         <h3 class="card-title">Header</h3>
                         <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>                            
                         </div>
                     </div>
                     <div class="card-body">
@@ -26,7 +55,7 @@
                                 <h3 class="card-title">WO Identification</h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                                    
                                 </div>
                             </div>
                             <div class="card-body">
@@ -327,7 +356,7 @@
                                 <h3 class="card-title">Requestor Information</h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                                    
                                 </div>
                             </div>
                             <div class="card-body">
@@ -340,7 +369,7 @@
                                 <h3 class="card-title">Details</h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                                    
                                 </div>
                             </div>
                             <div class="card-body">
@@ -353,7 +382,7 @@
                                 <h3 class="card-title">Notes</h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                                    
                                 </div>
                             </div>
                             <div class="card-body">
@@ -366,7 +395,7 @@
                                 <h3 class="card-title">Status</h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                                    
                                 </div>
                             </div>
                             <div class="card-body">
@@ -379,7 +408,7 @@
                                 <h3 class="card-title">References</h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                                    
                                 </div>
                             </div>
                             <div class="card-body">

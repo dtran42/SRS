@@ -23,5 +23,12 @@ namespace SRS.Models
         public string Role { get; set; }
         [Required]
         public string SelectedRoleId { get; set; }
+
+        [Required]
+        [StringLength(256)]
+        public string FirstName { get; set; }
+        [Required]
+        [StringLength(256)]
+        public string LastName { get; set; }
     }
 }

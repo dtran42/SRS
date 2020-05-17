@@ -93,10 +93,34 @@ body {
 .card > .card-header > .card-title{
     font-weight:bold;
 }
+.action-box {
+    margin-bottom: 3rem;
+}
+.action-box > .card-header > .card-title {
+    font-weight: normal;
+}
+    .action-box .card-footer button {
+        margin-left: 10px;
+    }
 .toast-header {
     background-color: #17a2b8;
 }
 .toast-header .mr-auto {
     font-weight:600;
     color: #fff;
+}
+.header-title {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 0;
+}
+.action-title {
+    font-weight: bold;
+    color: coral;
+}
+.action-btn-bar .action-desc {
+    padding: 5px 5px 5px 10px;
+}
+.btn-wrapper button {
+    margin-left: 10px;
 }

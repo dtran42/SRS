@@ -18,7 +18,7 @@ namespace SRS.Models
             State = "VacationRequestCreated";
             StateName = "Vacation request created";
         }
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         public string WorkflowCode { get; set; }
 
@@ -41,6 +41,10 @@ namespace SRS.Models
         public virtual ApplicationUser CreatedBy { get; set; }
         public Guid RequestorId { get; set; }
         public virtual ApplicationUser Requestor { get; set; }
+        public Guid PortfolioManagerId { get; set; }
+        public virtual ApplicationUser PortfolioManager { get; set; }
+        public Guid AltPortfolioManagerId { get; set; }
+        public virtual ApplicationUser AltPortfolioManager { get; set; }
         #endregion
     }
 }

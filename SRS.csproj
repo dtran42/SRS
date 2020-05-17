@@ -7,6 +7,8 @@
 
   <ItemGroup>
     <Compile Remove="Helpers\CustomInput.cs" />
+    <Compile Remove="Repositories\EmployeeRepository.cs" />
+    <Compile Remove="Repositories\WorkOrderRepository.cs" />
   </ItemGroup>
 
   <ItemGroup>

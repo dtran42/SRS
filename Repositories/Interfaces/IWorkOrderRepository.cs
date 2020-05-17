@@ -23,5 +23,7 @@ namespace SRS.Repositories.Interfaces
         void ChangeState(Guid id, string nextState, string nextStateName);
         void WriteTransitionHistory(Guid id, string currentState, string nextState, string command, IEnumerable<string> identities);
         void UpdateTransitionHistory(Guid id, string currentState, string nextState, string command, Guid? employeeId);
+        bool HasPermision(int woId, Guid identityId);
+        IEnumerable<string> GetPermisionUsers(int woId);
     }
 }
