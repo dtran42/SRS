@@ -14,16 +14,16 @@ namespace SRS.Data
         {
         }
 
+        public DbSet<UserInfo> UserInfos { get; set; }
         //public DbSet<WorkOrder> WorkOrders { get; set; }
-        //public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<ApplicationUser>(etb =>
-            //{
-            //    etb.HasKey(e => e.Id);
-            //    etb.ToTable("ApplicationUsers");
-            //});
+            modelBuilder.Entity<UserInfo>(etb =>
+            {
+                etb.HasKey(e => e.Email);
+                etb.ToTable("UserInfos");
+            });
             //modelBuilder.Entity<WorkOrder>(etb =>
             //{
             //    etb.HasKey(e => e.Id);

@@ -1,4 +1,5 @@
 ﻿using SRS.Common;
+using SRS.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -127,7 +128,98 @@ namespace SRS.ViewModels
 
         #endregion
 
+        #region Details
+
         #region Requestor Info
+        public UserInfo Requestor;
+        #endregion
+
+        #region Work Definition
+
+        [DisplayName("Requested Type of Work:")]
+        public string RequestedTypeOfWork { get; set; }
+        [DisplayName("Requested Work Order Type:")]
+        public string RequestedWorkOrderType { get; set; }
+        [DisplayName("Requested Billing Type:")]
+        public string RequestedBillingType { get; set; }
+        [DisplayName("Actual Type of Work:")]
+        public string ActualTypeOfWork { get; set; }
+        [DisplayName("Actual Type of Charge:")]
+        public string ActualTypeOfCharge { get; set; }
+        [DisplayName("Actual Work Order Type:")]
+        public string ActualWorkOrderType { get; set; }
+        [DisplayName("Release Reference:")]
+        public string ReleaseReference { get; set; }
+        [DisplayName("Zurich Base Support Offer:")]
+        public string ZurichBaseSupportOffer { get; set; }
+        [DisplayName("Requested Reduced Tax:")]
+        public string RequestedReducedTax { get; set; }
+        [DisplayName("Actual Reduced Tax:")]
+        public string ActualReducedTax { get; set; }
+        [DisplayName("Agreed Estimate Delivery Date:")]
+        public DateTime? AgreedEstimateDeliveryDate { get; set; }
+        [DisplayName("Release of Imp. Date:")]
+        public DateTime? ReleaseOrImplementDate { get; set; }
+        [DisplayName("Preferred Start Date:")]
+        public DateTime? PreferredStartDate { get; set; }
+        [DisplayName("UAT Delivery Date:")]
+        public DateTime? UATDeliveryDate { get; set; }
+        [DisplayName("AEDD Source:")]
+        public string AEDDSource { get; set; }
+        [DisplayName("Priority Sequence:")]
+        public int PrioritySequence { get; set; }
+        [DisplayName("CAPPUD:")]
+        public string CAPPUD { get; set; }
+        [DisplayName("Request Description:")]
+        public string RequestDescription { get; set; }
+        [DisplayName("Request Justification:")]
+        public string RequestJustification { get; set; }
+        [DisplayName("Application Group:")]
+        public string ApplicationGroup { get; set; }
+        [DisplayName("Application Catalog Impact:")]
+        public string ApplicationCatalogImpact { get; set; }
+        [DisplayName("Primary Application:")]
+        public string PrimaryApplication { get; set; }
+        [DisplayName("Application Count:")]
+        public int? ApplicationCount { get; set; }
+        [DisplayName("Other Application(s):")]
+        public string OtherApplications { get; set; }
+        [DisplayName("Portfolio:")]
+        public string Portfolio { get; set; }
+        [DisplayName("Parent SR:")]
+        public string ParentSR { get; set; }
+        [DisplayName("Project:")]
+        public string Project { get; set; }
+        [DisplayName("Funding Project:")]
+        public string FundingProject { get; set; }
+        [DisplayName("Project Type:")]
+        public string ProjectType { get; set; }
+        [DisplayName("Translation Services:")]
+        public string TranslationServices { get; set; }
+        [DisplayName("Impeding Work Order:")]
+        public string ImpedingWorkOrder { get; set; }
+        [DisplayName("Impeding Work Order Reason:")]
+        public string ImpedingWorkOrderReason { get; set; }
+        [DisplayName("Offshore %:")]
+        public float? OffshorePercentage { get; set; }
+        [DisplayName("PI Special Exclusion:")]
+        public string PISpecialExclusion { get; set; }
+        [DisplayName("PSD Attachment:")]
+        public string PSDAttachment { get; set; }
+        [DisplayName("Lock Down Date in GAM:")]
+        public DateTime? LockDownDateInGAM { get; set; }
+        [DisplayName("Actual Hours in GAM:")]
+        public int ActualHoursInGAM { get; set; }
+        [DisplayName("Size Threshold:")]
+        public string SizeThreshold { get; set; }
+        [DisplayName("Note:")]
+        public string WorkDefinitionNote { get; set; }
+        [DisplayName("ZET Note:")]
+        public string ZETNote { get; set; }
+        [DisplayName("ZET Data Extract Table:")]
+        public string ZETDataExtractTable { get; set; }
+
+        #endregion
 
         #endregion
     }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ApplicationUser>
+﻿@model IEnumerable<UserViewModel>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -14,24 +14,34 @@
                 <table class="table table-bordered">
                     <tbody>
                         <tr>
-                            <th>User Name</th>
+                            <th>Email</th>
                             <th>Role</th>
+                            <th>Full Name</th>
+                            <th>Phone</th>
+                            <th>Location</th>
+                            <th>Business Area</th>
+                            <th>Test Filed</th>
                             <th colspan="2">&nbsp;</th>
                         </tr>
                         @foreach (var account in Model)
                         {
-                            <tr>
-                                <td>@account.Email</td>
-                                <td>@account.Role</td>
-                                <td><a asp-action="Edit" asp-route-id="@account.Id" class="btn btn-sm btn-success">Edit</a></td>
-                                <td>
-                                    <form asp-action="Delete" asp-route-id="@account.Id" method="post">
-                                        <button type="submit" class="btn btn-sm btn-danger">
-                                            Delete
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
+                    <tr>
+                        <td>@account.Email</td>
+                        <td>@account.Role</td>
+                        <td>@account.FullName</td>
+                        <td>@account.Phone</td>
+                        <td>@account.Location</td>
+                        <td>@account.BusinessArea</td>
+                        <td>@account.TestFiled</td>
+                        <td><a asp-action="Edit" asp-route-id="@account.Id" class="btn btn-sm btn-success">Edit</a></td>
+                        <td>
+                            <form asp-action="Delete" asp-route-id="@account.Id" method="post">
+                                <button type="submit" class="btn btn-sm btn-danger">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
                         }
                     </tbody>
                 </table>

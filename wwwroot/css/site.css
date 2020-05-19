@@ -131,7 +131,7 @@ a.toastsDefaultDefault {
 a.toastsDefaultDefault:hover {
     color: deepskyblue;
 }
-.btn, .btn-sm{
+.btn-srs {
     min-height: 36px;
     min-width: 100px;
     border-radius: 6px;

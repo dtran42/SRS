@@ -6,6 +6,18 @@
     var CWQRequestPrefixes = ViewData["CWQRequestPrefixes"] as SelectList;
     var LSAs = ViewData["LSAs"] as SelectList;
     var Segments = ViewData["Segments"] as SelectList;
+    var AccountList = ViewData["AccountList"] as SelectList;
+    var LocationList = ViewData["LocationList"] as SelectList;
+    var ActualChargeTypes = ViewData["actualChargeTypes"] as SelectList;
+    var WorkOrderTypes = ViewData["WorkOrderTypes"] as SelectList;
+    var ApplicationGroups = ViewData["ApplicationGroups"] as SelectList;
+    var AppCatalogImpacts = ViewData["AppCatalogImpacts"] as SelectList;
+    var PrimaryApplications = ViewData["PrimaryApplications"] as SelectList;
+    var PortfolioList = ViewData["PortfolioList"] as SelectList;
+    var CAPPUDList = ViewData["CAPPUDList"] as SelectList;
+    var SRList = ViewData["SRList"] as SelectList;
+    var ProjectList = ViewData["ProjectList"] as SelectList;
+    var PISpecExcList = ViewData["PISpecExcList"] as SelectList;
 }
 <section class="request-detail">
     <div class="container-fluid">
@@ -14,7 +26,7 @@
                 <div class="header-title">@Html.DisplayFor(m => m.Workflow) - #@Html.DisplayFor(m => m.Id)</div>
                 <div class="card card-navy action-box">
                     <div class="card-header">
-                        <h3 class="card-title"><b>Description: </b>@Html.DisplayFor(m => m.WOTitle)</h3><br/>
+                        <h3 class="card-title"><b>Description: </b>@Html.DisplayFor(m => m.WOTitle)</h3><br />
                         <h3 class="card-title"><b>Request Status: </b>@Html.DisplayFor(m => m.WOStatus)</h3>
                     </div>
                     <div class="card-body">
@@ -28,24 +40,24 @@
                                 <div class="action-btn-bar">
                                     <div class="action-desc">Request Validation</div>
                                     <div class="btn-wrapper">
-                                        <button type="button" class="btn btn-sm btn-warning">Project Setup Pending</button>
-                                        <button type="button" class="btn btn-sm btn-warning">Send for ADM Review</button>
-                                        <button type="button" class="btn btn-sm btn-warning">Approve</button>
+                                        <button type="button" class="btn btn-sm btn-warning btn-srs">Project Setup Pending</button>
+                                        <button type="button" class="btn btn-sm btn-warning btn-srs">Send for ADM Review</button>
+                                        <button type="button" class="btn btn-sm btn-warning btn-srs">Approve</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="button" class="btn btn-sm btn-info">Make a copy</button>
-                        <button type="button" class="btn btn-sm btn-danger">Delete</button>
+                        <button type="button" class="btn btn-sm btn-info btn-srs">Make a copy</button>
+                        <button type="button" class="btn btn-sm btn-danger btn-srs">Delete</button>
                     </div>
                 </div>
                 <div class="card card-primary parent">
                     <div class="card-header">
                         <h3 class="card-title">Header</h3>
                         <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>                            
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                         </div>
                     </div>
                     <div class="card-body">
@@ -55,7 +67,6 @@
                                 <h3 class="card-title">WO Identification</h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                                    
                                 </div>
                             </div>
                             <div class="card-body">
@@ -84,7 +95,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label asp-for="Workflow"></label>
-                                            <select asp-for=" Workflow" class="form-control select2bs4" asp-items="Workflows"></select>
+                                            <select asp-for="Workflow" class="form-control select2bs4" asp-items="Workflows"></select>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -154,7 +165,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label asp-for="RequestPriority"></label>
-                                            <select asp-for=" RequestPriority" class="form-control select2bs4" asp-items="Html.GetEnumSelectList<Priority>()"></select>
+                                            <select asp-for="RequestPriority" class="form-control select2bs4" asp-items="Html.GetEnumSelectList<Priority>()"></select>
                                         </div>
                                     </div>
                                 </div>
@@ -182,7 +193,7 @@
                                                         <i class="far fa-calendar-alt"></i>
                                                     </span>
                                                 </div>
-                                                <input type="text" class="form-control float-right" asp-for="AsOfDate" id="asOfDate">
+                                                <input type="text" class="form-control float-right rm-date-picker" asp-for="AsOfDate">
                                             </div>
                                         </div>
                                     </div>
@@ -303,7 +314,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label asp-for="LSA"></label>
-                                            <select asp-for=" LSA" class="form-control select2bs4" asp-items="LSAs"></select>
+                                            <select asp-for="LSA" class="form-control select2bs4" asp-items="LSAs"></select>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -323,7 +334,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label asp-for="Segment"></label>
-                                            <select asp-for=" Segment" class="form-control select2bs4" asp-items="Segments"></select>
+                                            <select asp-for="Segment" class="form-control select2bs4" asp-items="Segments"></select>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -356,7 +367,420 @@
                                 <h3 class="card-title">Requestor Information</h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                                    
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="CreatedBy"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.CreatedBy)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="Requestor.TestFiled"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.Requestor.TestFiled)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="Requestor.FullName"></label>
+                                            <select asp-for="Requestor.Email" class="form-control select2bs4" asp-items="AccountList"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="Requestor.Phone"></label>
+                                            <input type="text" class="form-control" asp-for="Requestor.Phone" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="Requestor.Email"></label>
+                                            <input type="text" class="form-control" asp-for="Requestor.Email" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="Requestor.BusinessArea"></label>
+                                            <select asp-for="Requestor.BusinessArea" class="form-control select2bs4" asp-items="Segments"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="Requestor.Location"></label>
+                                            <select asp-for="Requestor.Location" class="form-control select2bs4" asp-items="LocationList"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-primary parent">
+                    <div class="card-header">
+                        <h3 class="card-title">Details</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!-- sub panel-->
+                        <div class="card card-info">
+                            <div class="card-header">
+                                <h3 class="card-title">Work Definition</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="RequestedTypeOfWork"></label>
+                                            <a class="toastsDefaultDefault" id="Requested Type of Work"><i class="fa fa-question-circle-o"></i></a>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.RequestedTypeOfWork)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="RequestedWorkOrderType"></label>
+                                            <a class="toastsDefaultDefault" id="Requested Work Order Type"><i class="fa fa-question-circle-o"></i></a>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.RequestedWorkOrderType)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="RequestedBillingType"></label>
+                                            <a class="toastsDefaultDefault" id="Requested Billing Type"><i class="fa fa-question-circle-o"></i></a>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.RequestedBillingType)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ActualTypeOfWork"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.ActualTypeOfWork)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ActualTypeOfCharge"></label>
+                                            <a class="toastsDefaultDefault" id="Actual Type of Charge"><i class="fa fa-question-circle-o"></i></a>
+                                            <select asp-for="ActualTypeOfCharge" class="form-control select2bs4" asp-items="ActualChargeTypes"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ActualWorkOrderType"></label>
+                                            <a class="toastsDefaultDefault" id="Actual Work Order Type"><i class="fa fa-question-circle-o"></i></a>
+                                            <select asp-for="ActualWorkOrderType" class="form-control select2bs4" asp-items="WorkOrderTypes"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ReleaseReference"></label>
+                                            <input type="text" class="form-control" asp-for="ReleaseReference" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ZurichBaseSupportOffer"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.ZurichBaseSupportOffer)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="RequestedReducedTax"></label>
+                                            <a class="toastsDefaultDefault" id="Requested Reduced Tax"><i class="fa fa-question-circle-o"></i></a>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.RequestedReducedTax)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ActualReducedTax"></label>
+                                            <a class="toastsDefaultDefault" id="Actual Reduced Tax"><i class="fa fa-question-circle-o"></i></a>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.ActualReducedTax)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="AgreedEstimateDeliveryDate"></label>
+                                            <a class="toastsDefaultDefault" id="Agreed Estimate Delivery Date"><i class="fa fa-question-circle-o"></i></a>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="far fa-calendar-alt"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text" class="form-control float-right rm-date-picker" asp-for="AgreedEstimateDeliveryDate">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="AEDDSource"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.AEDDSource)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ReleaseOrImplementDate"></label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="far fa-calendar-alt"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text" class="form-control float-right rm-date-picker" asp-for="ReleaseOrImplementDate">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="PreferredStartDate"></label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="far fa-calendar-alt"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text" class="form-control float-right rm-date-picker" asp-for="PreferredStartDate">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="UATDeliveryDate"></label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="far fa-calendar-alt"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text" class="form-control float-right rm-date-picker" asp-for="UATDeliveryDate">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="PrioritySequence"></label>
+                                            <input type="text" class="form-control" asp-for="PrioritySequence" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="CAPPUD"></label>
+                                            <a class="toastsDefaultDefault" id="CAPPUD"><i class="fa fa-question-circle-o"></i></a>
+                                            <select asp-for="CAPPUD" class="form-control select2bs4" asp-items="CAPPUDList"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="RequestDescription"></label>
+                                            <textarea rows="4" class="form-control" asp-for="RequestDescription"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="RequestJustification"></label>
+                                            <textarea rows="4" class="form-control" asp-for="RequestJustification"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ApplicationGroup"></label>
+                                            <select asp-for="ApplicationGroup" class="form-control select2bs4" asp-items="ApplicationGroups"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ApplicationCatalogImpact"></label>
+                                            <select asp-for="ApplicationCatalogImpact" class="form-control select2bs4" asp-items="AppCatalogImpacts"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="PrimaryApplication"></label>
+                                            <select asp-for="PrimaryApplication" class="form-control select2bs4" asp-items="PrimaryApplications"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="OtherApplications"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.OtherApplications)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ApplicationCount"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.ApplicationCount)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="Portfolio"></label>
+                                            <select asp-for="Portfolio" class="form-control select2bs4" asp-items="PortfolioList"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ParentSR"></label>
+                                            <select asp-for="ParentSR" class="form-control select2bs4" asp-items="SRList"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="Project"></label>
+                                            <select asp-for="Project" class="form-control select2bs4" asp-items="ProjectList"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="FundingProject"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.FundingProject)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ProjectType"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.ProjectType)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="TranslationServices"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.TranslationServices)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ImpedingWorkOrder"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.ImpedingWorkOrder)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ImpedingWorkOrderReason"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.ImpedingWorkOrderReason)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="OffshorePercentage"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.OffshorePercentage)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="PISpecialExclusion"></label>
+                                            <a class="toastsDefaultDefault" id="PI Special Exclusion"><i class="fa fa-question-circle-o"></i></a>
+                                            <select asp-for="PISpecialExclusion" class="form-control select2bs4" asp-items="PISpecExcList"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="PSDAttachment"></label>
+                                            <div class="input-group">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" asp-for="PSDAttachment" id="psdInputFile">
+                                                    <label class="custom-file-label" for="psdInputFile">Add</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="LockDownDateInGAM"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.LockDownDateInGAM)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ActualHoursInGAM"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.ActualHoursInGAM)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="SizeThreshold"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.SizeThreshold)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="WorkDefinitionNote"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.WorkDefinitionNote)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ZETDataExtractTable"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.ZETDataExtractTable)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="WorkDefinitionNote"></label>
+                                            <div class="readonly-data">@Html.DisplayFor(m => m.ZETNote)</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- sub panel-->
+                        <div class="card card-info">
+                            <div class="card-header">
+                                <h3 class="card-title">Client Contact Infomation</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -366,10 +790,10 @@
                         <!-- sub panel-->
                         <div class="card card-info">
                             <div class="card-header">
-                                <h3 class="card-title">Details</h3>
+                                <h3 class="card-title">Request Approver</h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                                    
+
                                 </div>
                             </div>
                             <div class="card-body">
@@ -379,10 +803,10 @@
                         <!-- sub panel-->
                         <div class="card card-info">
                             <div class="card-header">
-                                <h3 class="card-title">Notes</h3>
+                                <h3 class="card-title">DXC Contact Information</h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                                    
+
                                 </div>
                             </div>
                             <div class="card-body">
@@ -392,10 +816,10 @@
                         <!-- sub panel-->
                         <div class="card card-info">
                             <div class="card-header">
-                                <h3 class="card-title">Status</h3>
+                                <h3 class="card-title">Assignment</h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                                    
+
                                 </div>
                             </div>
                             <div class="card-body">
@@ -405,16 +829,101 @@
                         <!-- sub panel-->
                         <div class="card card-info">
                             <div class="card-header">
-                                <h3 class="card-title">References</h3>
+                                <h3 class="card-title">Delegation</h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                                    
+
                                 </div>
                             </div>
                             <div class="card-body">
 
                             </div>
                         </div>
+                        <!-- sub panel-->
+                        <div class="card card-info">
+                            <div class="card-header">
+                                <h3 class="card-title">Client Approved Estimate Data</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+
+                                </div>
+                            </div>
+                            <div class="card-body">
+
+                            </div>
+                        </div>
+                        <!-- sub panel-->
+                        <div class="card card-info">
+                            <div class="card-header">
+                                <h3 class="card-title">Direct Cost Margin (DCM)</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+
+                                </div>
+                            </div>
+                            <div class="card-body">
+
+                            </div>
+                        </div>
+                        <!-- sub panel-->
+                        <div class="card card-info">
+                            <div class="card-header">
+                                <h3 class="card-title">Other</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+
+                                </div>
+                            </div>
+                            <div class="card-body">
+
+                            </div>
+                        </div>
+                        <!-- sub panel-->
+                        <div class="card card-info">
+                            <div class="card-header">
+                                <h3 class="card-title">Work Status</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+
+                                </div>
+                            </div>
+                            <div class="card-body">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-primary parent">
+                    <div class="card-header">
+                        <h3 class="card-title">Notes</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+
+                    </div>
+                </div>
+                <div class="card card-primary parent">
+                    <div class="card-header">
+                        <h3 class="card-title">Status</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+
+                    </div>
+                </div>
+                <div class="card card-primary parent">
+                    <div class="card-header">
+                        <h3 class="card-title">References</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+
                     </div>
                 </div>
             </div>
@@ -428,8 +937,9 @@
                 theme: 'bootstrap4'
             })
         });
-        $('#asOfDate').daterangepicker({
-            singleDatePicker: true
+        $('.rm-date-picker').daterangepicker({
+            singleDatePicker: true,
+            autoUpdateInput: false
         });
         $("input[data-bootstrap-switch]").each(function () {
             $(this).bootstrapSwitch({
@@ -442,7 +952,7 @@
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
-            timer: 3000
+            timer: 5000
         });
         var helpList = @Html.Raw(JsonConvert.SerializeObject(ViewBag.HelpList));
         console.log(helpList);

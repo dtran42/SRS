@@ -8,7 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SRS.Common;
+using SRS.Data;
 using SRS.Models;
+using SRS.ViewModels;
 
 namespace SRS.Controllers
 {
@@ -17,26 +19,34 @@ namespace SRS.Controllers
     {
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly ApplicationDbContext _context;
 
-        public AccountController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        public AccountController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, ApplicationDbContext context)
         {
             _roleManager = roleManager;
             _userManager = userManager;
+            _context = context;
         }
 
         public async Task<IActionResult> Index()
         {
             var users = await _userManager.Users.ToListAsync();
-            var accounts = new List<ApplicationUser>();
+            var accounts = new List<UserViewModel>();
 
             foreach (var u in users)
             {
                 var role = await GetRolesOfUser(u);
-                var account = new ApplicationUser
+                var info = _context.UserInfos.FirstOrDefault(i => i.Email == u.Email);
+                var account = new UserViewModel
                 {
                     Id = u.Id,
                     Email = u.Email,
-                    Role = role
+                    Role = role,
+                    FullName = info != null ? info.FullName : string.Empty,
+                    Phone = info != null ? info.Phone : string.Empty,
+                    Location = info != null ? info.Location : string.Empty,
+                    BusinessArea = info != null ? info.BusinessArea : string.Empty,
+                    TestFiled = info != null ? info.TestFiled : string.Empty,
                 };
 
                 accounts.Add(account);
@@ -48,11 +58,11 @@ namespace SRS.Controllers
         {
             var roles = _roleManager.Roles.OrderBy(r => r.Name).ToList();
             ViewData["Roles"] = new SelectList(roles, "Id", "Name");
-            return View(new ApplicationUser());
+            return View(new UserViewModel());
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(ApplicationUser account)
+        public async Task<IActionResult> Create(UserViewModel account)
         {
             var existUser = await _userManager.FindByEmailAsync(account.Email);
 
@@ -67,7 +77,20 @@ namespace SRS.Controllers
                     {
                         var addRoleResult = await _userManager.AddToRoleAsync(user, role.Name);
                         if (addRoleResult.Succeeded)
+                        {
+                            var info = new UserInfo() 
+                            {
+                                Email = account.Email,
+                                FullName = account.FullName,
+                                Phone = account.Phone,
+                                Location = account.Location,
+                                BusinessArea = account.BusinessArea,
+                                TestFiled = account.TestFiled
+                            };
+                            _context.UserInfos.Add(info);
+                            _context.SaveChanges();
                             return RedirectToAction("Index");
+                        }
                         else
                             Utils.Errors(addRoleResult, ModelState);
                     }
@@ -92,11 +115,17 @@ namespace SRS.Controllers
                 {
                     roleId = roleList.Find(r => r.Name == roles[0]).Id;
                 }
-                var account = new ApplicationUser
+                var info = _context.UserInfos.FirstOrDefault(i => i.Email == editUser.Email);
+                var account = new UserViewModel
                 {
                     Id = editUser.Id,
                     Email = editUser.Email,
-                    SelectedRoleId = roleId
+                    SelectedRoleId = roleId,
+                    FullName = info != null ? info.FullName : string.Empty,
+                    Phone = info != null ? info.Phone : string.Empty,
+                    Location = info != null ? info.Location : string.Empty,
+                    BusinessArea = info != null ? info.BusinessArea : string.Empty,
+                    TestFiled = info != null ? info.TestFiled : string.Empty,
                 };
 
                 ViewData["Roles"] = new SelectList(roleList, "Id", "Name");
@@ -107,7 +136,7 @@ namespace SRS.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(ApplicationUser account)
+        public async Task<IActionResult> Edit(UserViewModel account)
         {
             var user = await _userManager.FindByIdAsync(account.Id);
             if (user != null)
@@ -133,7 +162,31 @@ namespace SRS.Controllers
                             var updateRole = await _userManager.AddToRoleAsync(user, role.Name);
                             if (updateRole.Succeeded)
                             {
-                                return RedirectToPage("Index");
+                                var info = _context.UserInfos.FirstOrDefault(i => i.Email == account.Email);
+                                if (info == null)
+                                {
+                                    info = new UserInfo()
+                                    {
+                                        Email = account.Email,
+                                        FullName = account.FullName,
+                                        Phone = account.Phone,
+                                        Location = account.Location,
+                                        BusinessArea = account.BusinessArea,
+                                        TestFiled = account.TestFiled
+                                    };
+                                    _context.UserInfos.Add(info);
+                                }
+                                else
+                                {
+                                    info.FullName = account.FullName;
+                                    info.Phone = account.Phone;
+                                    info.Location = account.Location;
+                                    info.BusinessArea = account.BusinessArea;
+                                    info.TestFiled = account.TestFiled;
+                                    _context.UserInfos.Update(info);
+                                }
+                                _context.SaveChanges();
+                                return RedirectToAction("Index");
                             }
                             else
                                 Utils.Errors(updateRole, ModelState);
