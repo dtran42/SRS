@@ -1529,7 +1529,7 @@
             }
         },
 
-        updateElement: function() {
+        updateElement: function () {
             if (this.element.is('input') && this.autoUpdateInput) {
                 var newValue = this.startDate.format(this.locale.format);
                 if (!this.singleDatePicker) {
@@ -1537,6 +1537,13 @@
                 }
                 if (newValue !== this.element.val()) {
                     this.element.val(newValue).trigger('change');
+                }
+            }
+
+            if (!this.autoUpdateInput && this.element.val().length > 0) {
+                var adjustValue = moment(this.element.val()).format('MMM D, YYYY');
+                if (adjustValue !== this.element.val()) {
+                    this.element.val(adjustValue).trigger('change');
                 }
             }
         },

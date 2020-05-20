@@ -221,6 +221,78 @@ namespace SRS.ViewModels
 
         #endregion
 
+        #region Cilent Contact
+        [DisplayName("Technical Contact:")]
+        public string TechContact { get; set; }
+        [DisplayName("Tech Contact Phone:")]
+        public string TechContactPhone { get; set; }
+        [DisplayName("Administrative Contact:")]
+        public string AdminContact { get; set; }
+        [DisplayName("Admin Contact Phone:")]
+        public string AdminContactPhone { get; set; }
+        #endregion
+
+        #region Request Approver
+        [DisplayName("Local Approval:")]
+        public string LocalApproval{ get; set; }
+        [DisplayName("Local Approval Date:")]
+        public DateTime? LocalApprovalDate { get; set; }
+        [DisplayName("Customer Submission Approval (initial):")]
+        public string CustomerApprovalInit { get; set; }
+        [DisplayName("Customer (initial) Approval Date:")]
+        public DateTime? CustomerApprovalInitDate { get; set; }
+        [DisplayName("Customer Submission Approval (final):")]
+        public string CustomerApprovalFinal { get; set; }
+        [DisplayName("Customer (final) Approval Date:")]
+        public DateTime? CustomerApprovalFinalDate { get; set; }
+        [DisplayName("Client Authorized Approver of DXC Estimate:")]
+        public UserInfo ClientAuthorizedApprover { get; set; }
+        public string ClientAuthorizedApproverEmail { get; set; }
+        #endregion
+
+        [DisplayName("Portfolio Manager:")]
+        public string PortfolioManager { get; set; }
+        [DisplayName("Alternate Portfolio Manager:")]
+        public UserInfo PortfolioManagerAlt { get; set; }
+        public string PortfolioManagerAltEmail { get; set; }
+
+        #region Assignment
+
+        [DisplayName("GHPAT:")]
+        public string GHPAT { get; set; }
+        [DisplayName("Captain:")]
+        public string Captain { get; set; }
+        [DisplayName("Assignee:")]
+        public UserInfo Assignee { get; set; }
+        [DisplayName("Assignee E-mail Address:")]
+        public string AssigneeEmail { get; set; }
+        [DisplayName("Assignee Phone:")]
+        public string AssigneePhone { get { return Assignee != null ? Assignee.Phone : string.Empty; } }
+        [DisplayName("Assignee Date:")]
+        public DateTime? AssigneeDate { get; set; }
+
+        [DisplayName("Backup Dispatcher:")]
+        public UserInfo BackupDispatcher { get; set; }
+        [DisplayName("Backup Dispatcher E-mail Address:")]
+        public string BackupDispatcherEmail { get; set; }
+        [DisplayName("Backup Dispatcher Phone:")]
+        public string BackupDispatcherPhone { get { return BackupDispatcher != null ? BackupDispatcher.Phone : string.Empty; } }
+        [DisplayName("Backup Dispatcher Date:")]
+        public DateTime? BackupDispatcherDate { get; set; }
+
+        #endregion
+
+        #region Delegation
+        [DisplayName("Portfolio Manager Delegate:")]
+        public string PortfolioManagerDelegate { get; set; }
+        [DisplayName("Assignee Delegate:")]
+        public string AssigneeDelegate { get; set; }
+        [DisplayName("Client Requestor Delegate:")]
+        public string ClientRequestorDelegate { get; set; }
+        [DisplayName("Client Approver Delegate:")]
+        public string ClientApproverDelegate { get; set; }
+        #endregion
+
         #endregion
     }
 }
