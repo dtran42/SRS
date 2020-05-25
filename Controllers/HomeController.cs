@@ -32,16 +32,16 @@ namespace SRS.Controllers
             //todo: get data and populate to RequestViewModel
             List<RequestViewModel> requests = new List<RequestViewModel>()
             {
-                new RequestViewModel { Id = 53278, WOTitle = "Test the ZET 3.43 Version", RequestPriority = Priority.Medium.GetDescription(), WOStatus = "Calculate AEDO", CreatedBy = "User A" },
-                new RequestViewModel { Id = 53277, WOTitle = "Test the ZET 4.0 release", RequestPriority = Priority.Low.GetDescription(), WOStatus = "Client Approval", CreatedBy = "User B" },
-                new RequestViewModel { Id = 43206, WOTitle = "Zurich new WO with long phone", RequestPriority = Priority.Hight.GetDescription(), WOStatus = "Calculate AEDO", CreatedBy = "User U" },
-                new RequestViewModel { Id = 43080, WOTitle = "Test the ZET 5.0 Version", RequestPriority = Priority.Hight.GetDescription(), WOStatus = "Client Approval", CreatedBy = "User P" },
-                new RequestViewModel { Id = 43078, WOTitle = "Test the ZET 5.2 realease", RequestPriority = Priority.Low.GetDescription(), WOStatus = "Client Approval", CreatedBy = "User M" },
-                new RequestViewModel { Id = 53232, WOTitle = "Test the ZET 3.43 Version", RequestPriority = Priority.Medium.GetDescription(), WOStatus = "Calculate AEDO", CreatedBy = "User K" },
-                new RequestViewModel { Id = 53246, WOTitle = "Test the ZET 4.0 release", RequestPriority = Priority.Low.GetDescription(), WOStatus = "Client Approval", CreatedBy = "User X" },
-                new RequestViewModel { Id = 43123, WOTitle = "Zurich new WO with long phone", RequestPriority = Priority.Hight.GetDescription(), WOStatus = "Calculate AEDO", CreatedBy = "User Q" },
-                new RequestViewModel { Id = 43090, WOTitle = "Test the ZET 5.0 Version", RequestPriority = Priority.Hight.GetDescription(), WOStatus = "Client Approval", CreatedBy = "User I" },
-                new RequestViewModel { Id = 43876, WOTitle = "Test the ZET 5.2 realease", RequestPriority = Priority.Low.GetDescription(), WOStatus = "Client Approval", CreatedBy = "User Z" },
+                new RequestViewModel { Id = 53278, WOTitle = "Test the ZET 3.43 Version", RequestPriority = Priority.Medium, WOStatus = "Calculate AEDO", CreatedBy = "User A" },
+                new RequestViewModel { Id = 53277, WOTitle = "Test the ZET 4.0 release", RequestPriority = Priority.Low, WOStatus = "Client Approval", CreatedBy = "User B" },
+                new RequestViewModel { Id = 43206, WOTitle = "Zurich new WO with long phone", RequestPriority = Priority.Hight, WOStatus = "Calculate AEDO", CreatedBy = "User U" },
+                new RequestViewModel { Id = 43080, WOTitle = "Test the ZET 5.0 Version", RequestPriority = Priority.Hight, WOStatus = "Client Approval", CreatedBy = "User P" },
+                new RequestViewModel { Id = 43078, WOTitle = "Test the ZET 5.2 realease", RequestPriority = Priority.Low, WOStatus = "Client Approval", CreatedBy = "User M" },
+                new RequestViewModel { Id = 53232, WOTitle = "Test the ZET 3.43 Version", RequestPriority = Priority.Medium, WOStatus = "Calculate AEDO", CreatedBy = "User K" },
+                new RequestViewModel { Id = 53246, WOTitle = "Test the ZET 4.0 release", RequestPriority = Priority.Low, WOStatus = "Client Approval", CreatedBy = "User X" },
+                new RequestViewModel { Id = 43123, WOTitle = "Zurich new WO with long phone", RequestPriority = Priority.Hight, WOStatus = "Calculate AEDO", CreatedBy = "User Q" },
+                new RequestViewModel { Id = 43090, WOTitle = "Test the ZET 5.0 Version", RequestPriority = Priority.Hight, WOStatus = "Client Approval", CreatedBy = "User I" },
+                new RequestViewModel { Id = 43876, WOTitle = "Test the ZET 5.2 realease", RequestPriority = Priority.Low, WOStatus = "Client Approval", CreatedBy = "User Z" },
             };
             return View(requests);
         }
@@ -103,6 +103,7 @@ namespace SRS.Controllers
 
             List<KeyValuePair<string, string>> applicationGroups = new List<KeyValuePair<string, string>>()
             {
+                new KeyValuePair<string, string>(string.Empty,string.Empty),
                 new KeyValuePair<string, string>("All Applications","All Applications"),
                 new KeyValuePair<string, string>("Application Group 1","Application Group 1"),
                 new KeyValuePair<string, string>("Application Group 2","Application Group 2"),
@@ -121,6 +122,7 @@ namespace SRS.Controllers
 
             List<KeyValuePair<string, string>> cappudList = new List<KeyValuePair<string, string>>()
             {
+                new KeyValuePair<string, string>(string.Empty,string.Empty),
                 new KeyValuePair<string, string>("Corrective","Corrective"),
                 new KeyValuePair<string, string>("Adaptive","Adaptive"),
                 new KeyValuePair<string, string>("Preventive","Preventive"),
@@ -131,24 +133,11 @@ namespace SRS.Controllers
             };
             ViewData["CAPPUDList"] = new SelectList(cappudList, "Key", "Value");
 
-            List<KeyValuePair<string, string>> primaryApplications = new List<KeyValuePair<string, string>>()
-            {
-                new KeyValuePair<string, string>("New Application","New Application"),
-                new KeyValuePair<string, string>("No Application","No Application"),
-                new KeyValuePair<string, string>("50 Screen for inquiry","50 Screen for inquiry"),
-                new KeyValuePair<string, string>("A&H Cash Management","A&H Cash Management"),
-                new KeyValuePair<string, string>("AA Centrica data transfer","AA Centrica data transfer"),
-                new KeyValuePair<string, string>("ACCMAN - Accident Management System","ACCMAN - Accident Management System"),
-                new KeyValuePair<string, string>("AGIL Client","AGIL Client"),
-                new KeyValuePair<string, string>("AIA","AIA"),
-                new KeyValuePair<string, string>("AKIS","AKIS"),
-                new KeyValuePair<string, string>("ALEX","ALEX"),
-                new KeyValuePair<string, string>("ANGIS","ANGIS"),
-                new KeyValuePair<string, string>("Account Documentation","Account Documentation"),
-                new KeyValuePair<string, string>("Agency Dashboard","Agency Dashboard"),
-                new KeyValuePair<string, string>("Agency Management System","Agency Management System")
-            };
+            IList<KeyValuePair<string, string>> primaryApplications = GetPrimaryApplications();
             ViewData["PrimaryApplications"] = new SelectList(primaryApplications, "Key", "Value");
+
+            IList<KeyValuePair<int, string>> otherApplications = GetOtherApplications();
+            ViewData["OtherApplications"] = new SelectList(otherApplications, "Key", "Value");
 
             List<KeyValuePair<string, string>> portfolioList = new List<KeyValuePair<string, string>>()
             {
@@ -169,25 +158,13 @@ namespace SRS.Controllers
             };
             ViewData["PortfolioList"] = new SelectList(portfolioList, "Key", "Value");
 
-            List<KeyValuePair<string, string>> srList = new List<KeyValuePair<string, string>>()
-            {
-                new KeyValuePair<string, string>("51664","51664 - Funding Project for ECM Services"),
-                new KeyValuePair<string, string>("48963","48963 - AMER4886-GL_GLIFE-BS-PUZ0033148-Swindon"),
-                new KeyValuePair<string, string>("48825","48825 - AMER4485-Technology Solution-BS"),
-                new KeyValuePair<string, string>("48823","48823 - AMER4485-Business Solution-BS"),
-                new KeyValuePair<string, string>("47385","47385 - FY 11 Italy Funding SR")
-            };
+            IList<KeyValuePair<string, string>> srList = GetSRList();
             ViewData["SRList"] = new SelectList(srList, "Key", "Value");
 
-            List<KeyValuePair<string, string>> projectList = new List<KeyValuePair<string, string>>()
-            {
-                new KeyValuePair<string, string>("S9921-41335","S9921-41335 - Network Get Well Expert"),
-                new KeyValuePair<string, string>("S9245-41726","S9245-41726 - UKG Project X"),
-                new KeyValuePair<string, string>("S9210-38675","S9210-38675 - Benefits Statements (JD)"),
-                new KeyValuePair<string, string>("S9189-35078","S9189-35078 - Regional Day 2"),
-                new KeyValuePair<string, string>("S8894-42755","S8894-42755 - Chicago Winter Engineer")
-            };
+            IList<KeyValuePair<string, string>> projectList = GetProjectList();
             ViewData["ProjectList"] = new SelectList(projectList, "Key", "Value");
+            IList<KeyValuePair<string, string>> projectTypeList = GetProjectTypeList();
+            ViewData["ProjectTypeList"] = new SelectList(projectTypeList, "Key", "Value");
 
             List<KeyValuePair<string, string>> piSpecExcList = new List<KeyValuePair<string, string>>()
             {
@@ -213,7 +190,7 @@ namespace SRS.Controllers
                 #region WO Identification
                 Id = 53278,
                 WOTitle = "Test the ZET 3.43 Version",
-                RequestPriority = Priority.Medium.GetDescription(),
+                RequestPriority = Priority.Medium,
                 WOStatus = "Calculate AEDD",
                 CreatedBy = "User A",
                 Workflow = "SRMT-WF-R17V1-ZFS-WorkOrder",
@@ -283,7 +260,7 @@ namespace SRS.Controllers
                 ApplicationCatalogImpact = "Not Applicable",
                 PrimaryApplication = "New Application",
                 ApplicationCount = null,
-                OtherApplications = "(No Entries)",
+                OtherApplications = new int[] { 1, 2, 3, 4 },
                 Portfolio = "CH GI Shared",
                 ParentSR = string.Empty,
                 Project = string.Empty,
@@ -304,14 +281,17 @@ namespace SRS.Controllers
 
                 #endregion
 
-                #region Cilent Contact
+                #region Client Contact
+
                 TechContact = string.Empty,
                 TechContactPhone = string.Empty,
                 AdminContact = string.Empty,
                 AdminContactPhone = string.Empty,
+
                 #endregion
 
                 #region Request Approver
+
                 LocalApproval = "User A",
                 LocalApprovalDate = new DateTime(2020, 3, 3),
                 CustomerApprovalInit = "User B",
@@ -319,20 +299,90 @@ namespace SRS.Controllers
                 CustomerApprovalFinal = string.Empty,
                 CustomerApprovalFinalDate = null,
                 ClientAuthorizedApprover = null,
+
                 #endregion
 
                 PortfolioManager = "Hermann Tjabben",
                 PortfolioManagerAlt = null,
-                GHPAT=string.Empty,
-                Captain=string.Empty,
-                Assignee=null,
-                AssigneeDate=null,
-                BackupDispatcher=null,
-                BackupDispatcherDate=null,
-                PortfolioManagerDelegate=string.Empty,
+                GHPAT = string.Empty,
+                Captain = string.Empty,
+                Assignee = null,
+                AssigneeDate = null,
+                BackupDispatcher = null,
+                BackupDispatcherDate = null,
+                PortfolioManagerDelegate = string.Empty,
                 AssigneeDelegate = string.Empty,
                 ClientRequestorDelegate = string.Empty,
-                ClientApproverDelegate = string.Empty
+                ClientApproverDelegate = string.Empty,
+
+                #region Client Approved Estimate Data
+
+                ResourceAllocation = null,
+                ResourceHoursCostsPerMonth = null,
+                WOHoursSummary = null,
+                WOCostsSummary = null,
+                WOMilestonesSummary = null,
+                FixedPriceBillingSchedule = null,
+                BudgetChangeHistory = null,
+                ScheduleChangeHistory = null,
+                NumberOfHours = null,
+                FunctionPointEstimate = null,
+                FinanceExtractBillingSchedule = null,
+                TotalAuthorizedHours = null,
+                ZETVersion = string.Empty,
+                LocalCurrency = string.Empty,
+
+                #endregion
+
+                #region DCM
+
+                InitialDCMPerCentage = string.Empty,
+                InitialDCMCost = string.Empty,
+                InitialDCMLocalCurrency = string.Empty,
+                InitialDCMTimestamp = string.Empty,
+
+                LastApprovedDCMPerCentage = string.Empty,
+                LastApprovedDCMCost = string.Empty,
+                LastApprovedDCMLocalCurrency = string.Empty,
+                LastApprovedDCMTimestamp = string.Empty,
+                LastApprovedDCMHistory = null,
+
+                ActualDCMPerCentage = string.Empty,
+                ActualDCMCost = string.Empty,
+                ActualDCMLocalCurrency = string.Empty,
+                ActualDCMTimestamp = string.Empty,
+
+                #endregion
+
+                #region Other
+
+                OutOfScope = false,
+                OutOfPlan = false,
+                PorManagerApprovedDate = null,
+                EstimateCompletedDate = null,
+                DXCApprovedDate = null,
+                DXCRejectedDate = null,
+                ClientApprovedDate = null,
+                ClientRejectedDate = null,
+                ClosedDate = null,
+                CancelledDate = null,
+                OnHoldDate = null,
+                DXCGroupMailBox1 = string.Empty,
+                DXCGroupMailBox2 = string.Empty,
+                ClientGroupMailBox = string.Empty,
+                UnlockReason = string.Empty,
+                UnlockJustification = string.Empty,
+                HiddenCurrentUnlockStep = string.Empty,
+                HiddenSaveParentSR = string.Empty,
+                HiddenSaveProject = string.Empty,
+                HiddenSaveProjectType = string.Empty,
+
+                #endregion
+
+                CurrentWorkStatus = string.Empty,
+                CurrentWorkStatusDate = null,
+                WorkStatusSource = string.Empty,
+                WorkStatusHistory = null
 
                 #endregion
             };
@@ -369,7 +419,7 @@ namespace SRS.Controllers
         }
 
         private IList<ClientWorkRequestPrefix> GetClientWorkRequestPrefixes()
-        { 
+        {
             return new List<ClientWorkRequestPrefix>()
             {
                 new ClientWorkRequestPrefix { IdPrefix="AUST_LOC", BusinessArea="Australia_Local" },
@@ -393,7 +443,7 @@ namespace SRS.Controllers
         }
 
         private IList<KeyValuePair<string, string>> GetLSAs()
-        { 
+        {
             return new List<KeyValuePair<string, string>>()
             {
                 new KeyValuePair<string, string>("Austria","Austria"),
@@ -429,7 +479,7 @@ namespace SRS.Controllers
         }
 
         private IList<KeyValuePair<string, string>> GetHelpList()
-        { 
+        {
             return new List<KeyValuePair<string, string>>()
             {
                 new KeyValuePair<string, string>("WO Number", "ITG generated SR number. Used by ITG to track work orders. Independent and not related to GAM SR number."),
@@ -507,11 +557,11 @@ namespace SRS.Controllers
                     "This table contains the same information as the Summary Resource Allocation table on the estimate that is approved by the client. When an estimate moves to a client approved status, this table is updated automatically."
                     ),
                 new KeyValuePair<string, string>(
-                    "ActualDCMPer",
+                    "Actual DCM %",
                     "Enter the Direct Cost Margin percentage."
                     ),
                 new KeyValuePair<string, string>(
-                    "ActualDCMCost",
+                    "Actual DCM $",
                     "Enter the Direct Cost Margin dollar amount."
                     ),
                 new KeyValuePair<string, string>(
@@ -524,6 +574,92 @@ namespace SRS.Controllers
                     )
             };
         }
+
+        private IList<KeyValuePair<string, string>> GetPrimaryApplications()
+        {
+            return new List<KeyValuePair<string, string>>()
+            {
+                new KeyValuePair<string, string>(string.Empty,string.Empty),
+                new KeyValuePair<string, string>("New Application","New Application"),
+                new KeyValuePair<string, string>("No Application","No Application"),
+                new KeyValuePair<string, string>("50 Screen for inquiry","50 Screen for inquiry"),
+                new KeyValuePair<string, string>("A&H Cash Management","A&H Cash Management"),
+                new KeyValuePair<string, string>("AA Centrica data transfer","AA Centrica data transfer"),
+                new KeyValuePair<string, string>("ACCMAN - Accident Management System","ACCMAN - Accident Management System"),
+                new KeyValuePair<string, string>("AGIL Client","AGIL Client"),
+                new KeyValuePair<string, string>("AIA","AIA"),
+                new KeyValuePair<string, string>("AKIS","AKIS"),
+                new KeyValuePair<string, string>("ALEX","ALEX"),
+                new KeyValuePair<string, string>("ANGIS","ANGIS"),
+                new KeyValuePair<string, string>("Account Documentation","Account Documentation"),
+                new KeyValuePair<string, string>("Agency Dashboard","Agency Dashboard"),
+                new KeyValuePair<string, string>("Agency Management System","Agency Management System")
+            };
+        }
+
+        private IList<KeyValuePair<int, string>> GetOtherApplications()
+        {
+            return new List<KeyValuePair<int, string>>()
+            {
+                new KeyValuePair<int, string>(-1,string.Empty),
+                new KeyValuePair<int, string>(1,"Agency Dashboard"),
+                new KeyValuePair<int, string>(2,"Consumer Sites Farmer.com"),
+                new KeyValuePair<int, string>(3,"Employee Dashboard"),
+                new KeyValuePair<int, string>(4,"Single Customer View")
+            };
+        }
+
+        private IList<KeyValuePair<string, string>> GetSRList()
+        {
+            return new List<KeyValuePair<string, string>>()
+            {
+                new KeyValuePair<string, string>(string.Empty,string.Empty),
+                new KeyValuePair<string, string>("51664","51664 - Funding Project for ECM Services"),
+                new KeyValuePair<string, string>("48963","48963 - AMER4886-GL_GLIFE-BS-PUZ0033148-Swindon"),
+                new KeyValuePair<string, string>("48825","48825 - AMER4485-Technology Solution-BS"),
+                new KeyValuePair<string, string>("48823","48823 - AMER4485-Business Solution-BS"),
+                new KeyValuePair<string, string>("47385","47385 - FY 11 Italy Funding SR")
+            };
+        }
+
+        private IList<KeyValuePair<string, string>> GetProjectList()
+        {
+            return new List<KeyValuePair<string, string>>()
+            {
+                new KeyValuePair<string, string>(string.Empty,string.Empty),
+                new KeyValuePair<string, string>("S9921-41335","S9921-41335 - Network Get Well Expert"),
+                new KeyValuePair<string, string>("S9245-41726","S9245-41726 - UKG Project X"),
+                new KeyValuePair<string, string>("S9210-38675","S9210-38675 - Benefits Statements (JD)"),
+                new KeyValuePair<string, string>("S9189-35078","S9189-35078 - Regional Day 2"),
+                new KeyValuePair<string, string>("S8894-42755","S8894-42755 - Chicago Winter Engineer")
+            };
+        }
+
+        private IList<KeyValuePair<string, string>> GetProjectTypeList()
+        {
+            return new List<KeyValuePair<string, string>>()
+            {
+                new KeyValuePair<string, string>(string.Empty,string.Empty),
+                new KeyValuePair<string, string>("Transition","Transition"),
+                new KeyValuePair<string, string>("Client","Client"),
+                new KeyValuePair<string, string>("Non Billable","Non Billable"),
+                new KeyValuePair<string, string>("Bid & Proposal","Bid & Proposal"),
+                new KeyValuePair<string, string>("Staff Augmentation Multi Vendor","Staff Augmentation Multi Vendor"),
+                new KeyValuePair<string, string>("Project/Program","Project/Program"),
+                new KeyValuePair<string, string>("Key Project","Key Project"),
+                new KeyValuePair<string, string>("Maintenance Support","Maintenance Support"),
+                new KeyValuePair<string, string>("Minor Enhancement Support","Minor Enhancement Support"),
+                new KeyValuePair<string, string>("Client Management Support","Client Management Support"),
+                new KeyValuePair<string, string>("User Support","User Support"),
+                new KeyValuePair<string, string>("Nonbillable","Nonbillable"),
+                new KeyValuePair<string, string>("Operational Bench","Operational Bench"),
+                new KeyValuePair<string, string>("Strategic Reserve","Strategic Reserve"),
+                new KeyValuePair<string, string>("Program","Program"),
+                new KeyValuePair<string, string>("Staff Augmentation Single Vendor","Staff Augmentation Single Vendor"),
+                new KeyValuePair<string, string>("Infrastructure Run/Improve","Infrastructure Run/Improve")
+            };
+        }
+
         #endregion
     }
 }

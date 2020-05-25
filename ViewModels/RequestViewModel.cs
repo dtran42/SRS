@@ -17,7 +17,7 @@ namespace SRS.ViewModels
         [DisplayName("WO Status:")]
         public string WOStatus { get; set; }
         [DisplayName("Request Priority:")]
-        public string RequestPriority { get; set; }
+        public Priority RequestPriority { get; set; }
         [DisplayName("Created By:")]
         public string CreatedBy { get; set; }
 
@@ -183,7 +183,7 @@ namespace SRS.ViewModels
         [DisplayName("Application Count:")]
         public int? ApplicationCount { get; set; }
         [DisplayName("Other Application(s):")]
-        public string OtherApplications { get; set; }
+        public int[] OtherApplications { get; set; }
         [DisplayName("Portfolio:")]
         public string Portfolio { get; set; }
         [DisplayName("Parent SR:")]
@@ -292,6 +292,133 @@ namespace SRS.ViewModels
         [DisplayName("Client Approver Delegate:")]
         public string ClientApproverDelegate { get; set; }
         #endregion
+
+        #region Client Approved Estimate Data
+
+        [DisplayName("Resource Allocation:")]
+        public string[] ResourceAllocation { get; set; }
+        [DisplayName("Resource Hours and Costs per Month:")]
+        public string[] ResourceHoursCostsPerMonth { get; set; }
+        [DisplayName("WO Hours Summary:")]
+        public string[] WOHoursSummary { get; set; }
+        [DisplayName("WO Costs Summary:")]
+        public string[] WOCostsSummary { get; set; }
+        [DisplayName("WO Milestones Summary:")]
+        public string[] WOMilestonesSummary { get; set; }
+        [DisplayName("Fixed Price Billing Schedule:")]
+        public string[] FixedPriceBillingSchedule { get; set; }
+        [DisplayName("Budget Change History:")]
+        public string[] BudgetChangeHistory { get; set; }
+        [DisplayName("Schedule Change History:")]
+        public string[] ScheduleChangeHistory { get; set; }
+        [DisplayName("Number of Hours:")]
+        public int? NumberOfHours { get; set; }
+        [DisplayName("Function Point Estimate:")]
+        public int? FunctionPointEstimate { get; set; }
+        [DisplayName("Finance Extract Billing Schedule:")]
+        public string[] FinanceExtractBillingSchedule { get; set; }
+        [DisplayName("Total Authorized Hours:")]
+        public string[] TotalAuthorizedHours { get; set; }
+        [DisplayName("ZET Version:")]
+        public string ZETVersion { get; set; }
+        [DisplayName("Local Currency:")]
+        public string LocalCurrency { get; set; }
+
+        #endregion
+
+        #region Direct Cost Margin
+
+        [DisplayName("Initial DCM %:")]
+        public string InitialDCMPerCentage { get; set; }
+        [DisplayName("Initial DCM $:")]
+        public string InitialDCMCost { get; set; }
+        [DisplayName("Initial DCM Local Currency:")]
+        public string InitialDCMLocalCurrency { get; set; }
+        [DisplayName("Initial DCM Timestamp:")]
+        public string InitialDCMTimestamp { get; set; }
+        [DisplayName("Last Approved DCM %:")]
+        public string LastApprovedDCMPerCentage { get; set; }
+        [DisplayName("Last Approved DCM $:")]
+        public string LastApprovedDCMCost { get; set; }
+        [DisplayName("Last Approved DCM Local Currency:")]
+        public string LastApprovedDCMLocalCurrency { get; set; }
+        [DisplayName("Last Approved DCM Timestamp:")]
+        public string LastApprovedDCMTimestamp { get; set; }
+        [DisplayName("Last Approved DCM History:")]
+        public string[] LastApprovedDCMHistory { get; set; }
+        [DisplayName("Actual DCM %:")]
+        public string ActualDCMPerCentage { get; set; }
+        [DisplayName("Actual DCM $:")]
+        public string ActualDCMCost { get; set; }
+        [DisplayName("Actual DCM Local Currency:")]
+        public string ActualDCMLocalCurrency { get; set; }
+        [DisplayName("Actual DCM Timestamp:")]
+        public string ActualDCMTimestamp { get; set; }
+
+        #endregion
+
+        #region Other
+
+        [DisplayName("Out of Scope:")]
+        public bool OutOfScope { get; set; }
+        [DisplayName("Out of Plan:")]
+        public bool OutOfPlan { get; set; }
+        [DisplayName("Portfolio Manager Approved Date:")]
+        public DateTime? PorManagerApprovedDate { get; set; }
+        [DisplayName("Estimate Completed Date:")]
+        public DateTime? EstimateCompletedDate { get; set; }
+        [DisplayName("DXC Approved Date:")]
+        public DateTime? DXCApprovedDate { get; set; }
+        [DisplayName("DXC Rejected Date:")]
+        public DateTime? DXCRejectedDate { get; set; }
+        [DisplayName("Client Approved Date:")]
+        public DateTime? ClientApprovedDate { get; set; }
+        [DisplayName("Client Rejected Date:")]
+        public DateTime? ClientRejectedDate { get; set; }
+        [DisplayName("Closed Date:")]
+        public DateTime? ClosedDate { get; set; }
+        [DisplayName("Cancelled Date:")]
+        public DateTime? CancelledDate { get; set; }
+        [DisplayName("On Hold Date:")]
+        public DateTime? OnHoldDate { get; set; }
+        [DisplayName("Change Control in Process Date:")]
+        public DateTime? ChangeControlProcessDate { get; set; }
+        [DisplayName("DXC Group MailBox 1:")]
+        public string DXCGroupMailBox1 { get; set; }
+        [DisplayName("DXC Group Mail Box 2:")]
+        public string DXCGroupMailBox2 { get; set; }
+        [DisplayName("Client Group Mail Box:")]
+        public string ClientGroupMailBox { get; set; }
+        [DisplayName("Unlock Reason:")]
+        public string UnlockReason { get; set; }
+        [DisplayName("Unlock Justification:")]
+        public string UnlockJustification { get; set; }
+        [DisplayName("Hidden Current Unlock Step:")]
+        public string HiddenCurrentUnlockStep { get; set; }
+        [DisplayName("Hidden Save Parent SR:")]
+        public string HiddenSaveParentSR { get; set; }
+        [DisplayName("Hidden Save Project:")]
+        public string HiddenSaveProject { get; set; }
+        [DisplayName("Hidden Save Project Type:")]
+        public string HiddenSaveProjectType { get; set; }
+
+        #endregion
+
+        [DisplayName("Current Work Status:")]
+        public string CurrentWorkStatus { get; set; }
+        [DisplayName("Current Work Status Date:")]
+        public DateTime? CurrentWorkStatusDate { get; set; }
+        [DisplayName("Work Status Source:")]
+        public string WorkStatusSource { get; set; }
+        [DisplayName("Work Status History:")]
+        public string[] WorkStatusHistory { get; set; }
+
+        [DisplayName("Note:")]
+        public string RequestNote { get; set; }
+        [DisplayName("Existing Notes:")]
+        public IList<Note> ExistingNotes { get; set; }
+
+        public IList<RequestHistory> RequestStatus { get; set; }
 
         #endregion
     }

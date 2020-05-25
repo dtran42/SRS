@@ -103,7 +103,7 @@ body {
         margin-left: 10px;
     }
 .toast-header {
-    background-color: #17a2b8;
+    background-color: #3c8dbc;
 }
 .toast-header .mr-auto {
     font-weight:600;
@@ -135,4 +135,7 @@ a.toastsDefaultDefault:hover {
     min-height: 36px;
     min-width: 100px;
     border-radius: 6px;
+}
+.rm-null-value {
+    padding: 0 0;
 }

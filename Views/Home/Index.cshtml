@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <div id="mainBox" class="card card-primary">
+                <div id="mainBox" class="card card-lightblue">
                     <div class="card-header">
                         <h3 class="card-title">Requests Ready For My Action</h3>
                         <div class="card-tools">
@@ -32,7 +32,7 @@
                                         <td><a asp-action="Detail" asp-route-id="@request.Id">@request.Id</a></td>
                                         <td>@request.WOTitle</td>
                                         <td>@request.WOStatus</td>
-                                        <td>@request.RequestPriority</td>
+                                        <td>@request.RequestPriority.GetDescription()</td>
                                         <td>@request.CreatedBy</td>
                                     </tr>
                                 }
@@ -45,7 +45,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <div id="requestsBox" class="card card-warning">
+                <div id="requestsBox" class="card card-gray">
                     <div class="card-header">
                         <h3 class="card-title">Request List</h3>
                         <div class="card-tools">
@@ -60,7 +60,7 @@
         </div>
         <div class="row">
             <div class="col-sm-6">
-                <div id="barChartBox" class="card card-info">
+                <div id="barChartBox" class="card card-gray-dark">
                     <div class="card-header">
                         <h3 class="card-title">Request Summary Bar Chart</h3>
                         <div class="card-tools">
@@ -75,7 +75,7 @@
                 </div>
             </div>
             <div class="col-sm-6">
-                <div id="pieChartBox" class="card card-success">
+                <div id="pieChartBox" class="card card-navy">
                     <div class="card-header">
                         <h3 class="card-title">Request Pie Chart</h3>
                         <div class="card-tools">

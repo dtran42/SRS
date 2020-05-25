@@ -978,9 +978,12 @@ S2.define('select2/results',[
 
         if ((item.element != null && item.element.selected) ||
             (item.element == null && $.inArray(id, selectedIds) > -1)) {
-          $option.attr('aria-selected', 'true');
+            $option.attr('aria-selected', 'true');            
         } else {
           $option.attr('aria-selected', 'false');
+        }
+        if (id.length === 0) {
+            $option.addClass('rm-null-value');
         }
       });
 
