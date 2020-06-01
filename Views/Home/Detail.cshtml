@@ -141,6 +141,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label asp-for="BusinessUnitId"></label>
+                                            <a class="toastsDefaultDefault" id="Business Unit ID"><i class="fa fa-question-circle-o"></i></a>
                                             <input type="text" class="form-control" asp-for="BusinessUnitId" />
                                         </div>
                                     </div>
@@ -1073,15 +1074,93 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label asp-for="ResourceAllocation"></label>
-                                            <a class="toastsDefaultDefault" id="Resource Allocation"><i class="fa fa-question-circle-o"></i></a>
+                                            <label asp-for="WOHoursSummary"></label>
+                                            <a class="toastsDefaultDefault" id="WO Hours Summary"><i class="fa fa-question-circle-o"></i></a>
                                             <div class="readonly-data">@Html.Raw(multipleChoiceEmptyText)</div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label asp-for="ResourceHoursCostsPerMonth"></label>
-                                            <a class="toastsDefaultDefault" id="Resource Hours and Costs per Month"><i class="fa fa-question-circle-o"></i></a>
+                                            <label asp-for="WOCostsSummary"></label>
+                                            <a class="toastsDefaultDefault" id="WO Costs Summary"><i class="fa fa-question-circle-o"></i></a>
+                                            <div class="readonly-data">@Html.Raw(multipleChoiceEmptyText)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="WOMilestonesSummary"></label>
+                                            <a class="toastsDefaultDefault" id="WO Milestones Summary"><i class="fa fa-question-circle-o"></i></a>
+                                            <div class="readonly-data">@Html.Raw(multipleChoiceEmptyText)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="FixedPriceBillingSchedule"></label>
+                                            <a class="toastsDefaultDefault" id="Fixed Price Billing Schedule"><i class="fa fa-question-circle-o"></i></a>
+                                            <div class="readonly-data">@Html.Raw(multipleChoiceEmptyText)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="BudgetChangeHistory"></label>
+                                            <a class="toastsDefaultDefault" id="Budget Change History"><i class="fa fa-question-circle-o"></i></a>
+                                            <div class="readonly-data">@Html.Raw(multipleChoiceEmptyText)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="ScheduleChangeHistory"></label>
+                                            <a class="toastsDefaultDefault" id="Schedule Change History"><i class="fa fa-question-circle-o"></i></a>
+                                            <div class="readonly-data">@Html.Raw(multipleChoiceEmptyText)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="NumberOfHours"></label>
+                                            <a class="toastsDefaultDefault" id="Number of Hours"><i class="fa fa-question-circle-o"></i></a>
+                                            <div class="readonly-data"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="FunctionPointEstimate"></label>
+                                            <a class="toastsDefaultDefault" id="Function Point Estimate"><i class="fa fa-question-circle-o"></i></a>
+                                            <div class="readonly-data"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="FinanceExtractBillingSchedule"></label>
+                                            <a class="toastsDefaultDefault" id="Finance Extract Billing Schedule"><i class="fa fa-question-circle-o"></i></a>
+                                            <div class="readonly-data">@Html.Raw(multipleChoiceEmptyText)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ZETVersion"></label>
+                                            <div class="readonly-data"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="LocalCurrency"></label>
+                                            <a class="toastsDefaultDefault" id="Local Currency"><i class="fa fa-question-circle-o"></i></a>
+                                            <div class="readonly-data"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label asp-for="TotalAuthorizedHours"></label>
                                             <div class="readonly-data">@Html.Raw(multipleChoiceEmptyText)</div>
                                         </div>
                                     </div>
